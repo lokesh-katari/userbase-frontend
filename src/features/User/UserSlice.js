@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { baseUrl } from "../..";
 
 const initialState = {
   userData: [],
@@ -25,33 +26,24 @@ export const LoginUser = createAsyncThunk(
 
 
 export const UserDetails = createAsyncThunk("user/details", async () => {
-  const { data } = await axios.get(`/api/users`);
+  const { data } = await axios.get(`${baseUrl}/api/users`);
   return data;
 });
 export const UserDetailsbyName = createAsyncThunk("user/details/name", async ({name}) => {
   console.log(name,"this is name");
-  const { data } = await axios.get(`/api/users?name=${name}`)
-  console.log(data,"this is data form user search");
+  const { data } = await axios.get(`${baseUrl}/api/users?name=${name}`)
+
   return data;
 });
 export const UserDetailsbyFilter = createAsyncThunk("user/details/filter", async ({url}) => {
 
-  const { data } = await axios.get(`/api/users?${url}`)
-  console.log(url,"this is data form user search");
-  return data;
-});
-
-export const updateUser = createAsyncThunk("update/user", async (myForm) => {
-  // console.log(`this is userRegister${myform}`);
-  const { data } = await axios.put(`/api/v1/update/profile`, myForm, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  console.log(`this is userupdate`);
+  const { data } = await axios.get(`${baseUrl}/api/users?${url}`)
 
   return data;
 });
+
+
+
 
 const userSlice = createSlice({
   name: "userSlice",
@@ -97,7 +89,7 @@ const userSlice = createSlice({
       state.loggedIn = true;
       state.loading = false;
       state.userData = action.payload;
-      console.log(action.payload,"this is action.spayload");
+     
    
     },
     [UserDetails.rejected]: (state, action) => {
@@ -113,7 +105,7 @@ const userSlice = createSlice({
       state.loggedIn = true;
       state.loading = false;
       state.userData = action.payload;
-      console.log(action.payload,"this is action.spayload");
+
    
     },
     [UserDetailsbyName.rejected]: (state, action) => {
@@ -130,7 +122,7 @@ const userSlice = createSlice({
       state.loggedIn = true;
       state.loading = false;
       state.userData = action.payload;
-      console.log(action.payload,"this is action.spayload");
+
    
     },
     [UserDetailsbyFilter.rejected]: (state, action) => {
@@ -139,21 +131,7 @@ const userSlice = createSlice({
       state.loggedIn = false;
     },
   
-    [updateUser.pending]: (state, action) => {
-      state.loading = true;
-      state.error = null;
-    },
-    [updateUser.fulfilled]: (state, action) => {
-      state.loading = false;
-      state.userData = action.payload.user;
-      state.isUpdated = true;
-    },
-    [updateUser.rejected]: (state, action) => {
-      state.loading = false;
-      state.error = action.error.message;
 
-      state.showAlert = true;
-    },
 
   },
 });

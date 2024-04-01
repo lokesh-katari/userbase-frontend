@@ -1,9 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import Badge from "@mui/material/Badge";
-import { styled } from "@mui/material/styles";
+import { Link,  } from "react-router-dom";
+import { useDispatch,  } from "react-redux";
+
 import { UserDetailsbyName } from "../features/User/UserSlice";
 
 

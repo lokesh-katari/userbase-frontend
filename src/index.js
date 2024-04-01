@@ -6,7 +6,7 @@ import App from './App';
 import { UserDetails } from './features/User/UserSlice';
 
 import './index.css';
-
+export const baseUrl = "https://userbase-backend.onrender.com"
 const container = document.getElementById('root');
 const root = createRoot(container);
 store.dispatch(UserDetails())

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import Filter from './Filter';
 import Pagination from "@mui/material/Pagination";
-import { ToastContainer,toast } from "react-toastify";
+
 import { addToTeam } from '../features/Team/team';
 import { UserDetailsbyFilter } from '../features/User/UserSlice';
 const Home = () => {
@@ -12,12 +12,11 @@ const Home = () => {
     const [users, setUsers] = useState([]);
     const [Cpage, setPage] = useState(1);
     const userSlice = useSelector((state) => state.userSlice.userData);
-    console.log(userSlice,"userSlice");
+
     useEffect(() => {
     
     setUsers(userSlice);
    
-    console.log("cureent page",Cpage);
       }
     , [userSlice,Cpage]);
     const handlePageChange = (event, value) => {
@@ -32,7 +31,7 @@ const Home = () => {
            
     <div className="mx-auto grid w-full max-w-7xl items-center space-y-4 px-2 py-10 md:grid-cols-2 md:gap-6 md:space-y-0 lg:grid-cols-4">
       
-      {users.map((user, i) => (
+      {users && Array.isArray(users) && users?.map((user, i) => (
         <div key={i} className="rounded-md border">
           <img
             src={user.avatar}
@@ -54,7 +53,7 @@ const Home = () => {
             <button
               type="button"
               onClick={() => {dispatch(addToTeam(user))
-              toast.success("User Added to Team");}}
+             }}
               className="mt-4 w-full rounded-sm bg-black px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
               Add to Team

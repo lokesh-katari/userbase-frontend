@@ -6,8 +6,9 @@ import axios from "axios";
 
 import { useEffect } from "react";
 	
-import { ToastContainer,toast } from "react-toastify";
+
 import { emptyTeam,removeFromTeam } from "../../features/Team/team";
+import { baseUrl } from "../..";
 const Team = () => {
   const dispatch = useDispatch();
   let team = useSelector((state) => state.team.selectedTeam);
@@ -20,16 +21,16 @@ const Team = () => {
   const handleCreateTeam = async() => {
     if (teamname) {
       console.log(users);
-      let {data} =await axios.post("/api/team", {
+      let {data} =await axios.post(`${baseUrl}/api/team`, {
         name:teamname,
         members: users,
       });
       // console.log(data);
       // localStorage.removeItem("selectedTeam");
       dispatch(emptyTeam());
-      toast.success("Team Created Successfully");
+      alert("Team Created Successfully");
     } else {
-      toast.error("Please Enter Team Name");
+     alert("Please Enter Team Name");
     }
   };
  
@@ -46,7 +47,7 @@ const Team = () => {
   return (
     <>  
     <div className="mx-auto  mt-28 grid w-full max-w-7xl items-center space-y-4 px-2 py-10 md:grid-cols-2 md:gap-6 md:space-y-0 lg:grid-cols-4">
-     {users.map((user, i) => (
+     {users && Array.isArray(users) &&users?.map((user, i) => (
         <div key={i} className="rounded-md border">
           <img
             src={user.avatar}

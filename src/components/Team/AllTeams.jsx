@@ -11,7 +11,7 @@ const AllTeams = () => {
         dispatch(getAllteams());
     }
     , [dispatch]);
-    console.log(team,"team");
+
   return (
    <>
     <section className="mx-auto w-full max-w-7xl px-4 py-4 mt-36">
@@ -52,7 +52,7 @@ const AllTeams = () => {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200 bg-white">
-                    {team.map((team) => (
+                    { team && Array.isArray(team)  && team?.map((team) => (
                       <tr key={team.name}>
                        
                         <Link to={`/allteams/${team._id}`}>

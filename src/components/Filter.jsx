@@ -25,7 +25,7 @@ const Filter = () => {
         .reduce((obj, [key, value]) => ({ ...obj, [key]: value }), {});
   
       // Construct the URL with query parameters
-      const baseUrl = 'https://your-backend-api.com/endpoint';
+
       const queryString = new URLSearchParams(queryParams).toString();
       const url = `${queryString}`;
       console.log(url);

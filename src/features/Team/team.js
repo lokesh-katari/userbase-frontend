@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { baseUrl } from "../..";
 
 const initialState = {
   selectedTeam: [],
@@ -11,14 +12,14 @@ const initialState = {
 export const getAllteams = createAsyncThunk("team/allteams", async () => {
 
 
-  const { data } = await axios.get(`/api/team/all/teams`)
+  const { data } = await axios.get(`${baseUrl}/api/team/all/teams`)
   return data;
 
 });
 export const getteam = createAsyncThunk("team/id", async ({id}) => {
 
 
-  const { data } = await axios.get(`/api/team/${id}`)
+  const { data } = await axios.get(`${baseUrl}/api/team/${id}`)
   return data;
 
 });

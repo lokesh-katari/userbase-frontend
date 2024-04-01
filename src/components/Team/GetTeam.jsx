@@ -19,7 +19,7 @@ const GetTeam = () => {
         <h1 className='text-3xl text-left'>Team Members</h1>
     
       <div className="mx-auto grid w-full max-w-7xl items-center space-y-4 px-2 py-10 md:grid-cols-2 md:gap-6 md:space-y-0 lg:grid-cols-4">
-      {users?.members?.map((user, i) => (
+      {users && Array.isArray(users) && users?.members?.map((user, i) => (
         <div key={i} className="rounded-md border">
           <img
             src={user.avatar}
