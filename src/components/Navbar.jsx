@@ -28,7 +28,7 @@ export const Navbar = () => {
   };
   return (
     <div className=" fixed top-0 w-full overflow-hidden z-50 bg-gray-900 opacity-90">
-      <nav className="  px-8 py-4 flex justify-between items-center border-y border-gray-400">
+      <nav className=" w-screen pl-8 pt-4 lg:pb-4 md:pb-4 flex justify-between items-center border-y border-gray-400">
         <Link
           to="/"
           className="text-3xl font-bold leading-none flex items-center space-x-4"

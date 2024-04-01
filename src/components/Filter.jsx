@@ -52,7 +52,7 @@ const Filter = () => {
 
   return (
     <>
-      <div className='mt-40 flex'>
+      <div className='mt-48 flex flex-col lg:flex-row md:flex-row'>
         <Dropdown
           options={["Female", "Male", "Agender", "Bigender"]}
           title={"Gender"}
@@ -71,14 +71,14 @@ const Filter = () => {
       
                 <input
                   type="text"
-                  className="h-10 mt-3 pl-10 pr-4 text-sm text-gray-700 bg-gray-100 rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
+                  className="h-10 lg:w-max w-3/4 mt-3 pl-10 pr-4 text-sm text-gray-700 bg-gray-100 rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
                   placeholder="Search"
                   value={searchText}
                   onChange={(e) => setSearchText(e.target.value)}
                 />
                
              
-        <button onClick={handleSearch} className='bg-blue-400 h-10 mt-3 ml-3 rounded-lg p-2 '>Search</button>
+        <button onClick={handleSearch} className='w-3/4 lg:w-max bg-blue-400 h-10 mt-3 ml-3 rounded-lg p-2 '>Search</button>
       </div>
     </>
   );

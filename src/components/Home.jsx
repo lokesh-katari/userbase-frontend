@@ -41,7 +41,10 @@ const Home = () => {
           <div className="p-4">
             <h1 className="inline-flex items-center text-lg font-semibold">{user.first_name+" "+user.last_name}</h1>
             <p className="mt-3 text-sm text-gray-600">
-            {user.email}
+           Email: {user.email}
+            </p>
+            <p className="mt-3 text-sm text-gray-600">
+           Gender: {user.gender}
             </p>
             <div className="mt-4">
               <span className="mb-2 mr-2 inline-block rounded-full bg-gray-100 px-3 py-1 text-[10px] font-semibold text-gray-900">
